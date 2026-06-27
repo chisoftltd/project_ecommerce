@@ -1,0 +1,726 @@
+{
+  "datasets": [
+    {
+      "name": "857c288c",
+      "displayName": "fact_transactions_denorm",
+      "config": {
+        "version": "1.1",
+        "source": "ecommerce.gold.fact_transactions_denorm",
+        "dimensions": [
+          {
+            "name": "date_id",
+            "expr": "source.date_id",
+            "displayName": "Date Id"
+          },
+          {
+            "name": "transaction_date",
+            "expr": "source.transaction_date",
+            "displayName": "Transaction Date"
+          },
+          {
+            "name": "transaction_ts",
+            "expr": "source.transaction_ts",
+            "displayName": "Transaction Ts"
+          },
+          {
+            "name": "customer_id",
+            "expr": "source.customer_id",
+            "displayName": "Customer Id"
+          },
+          {
+            "name": "transaction_id5",
+            "expr": "source.transaction_id5",
+            "displayName": "Transaction Id 5"
+          },
+          {
+            "name": "seq_no",
+            "expr": "source.seq_no",
+            "displayName": "Seq No"
+          },
+          {
+            "name": "product_id",
+            "expr": "source.product_id",
+            "displayName": "Product Id"
+          },
+          {
+            "name": "quantity",
+            "expr": "source.quantity",
+            "displayName": "Quantity"
+          },
+          {
+            "name": "unit_price_currency",
+            "expr": "source.unit_price_currency",
+            "displayName": "Unit Price Currency"
+          },
+          {
+            "name": "unit_price",
+            "expr": "source.unit_price",
+            "displayName": "Unit Price"
+          },
+          {
+            "name": "discount_percent",
+            "expr": "source.discount_percent",
+            "displayName": "Discount Percent"
+          },
+          {
+            "name": "tax_amount",
+            "expr": "source.tax_amount",
+            "displayName": "Tax Amount"
+          },
+          {
+            "name": "channel",
+            "expr": "source.channel",
+            "displayName": "Channel"
+          },
+          {
+            "name": "coupon_code",
+            "expr": "source.coupon_code",
+            "displayName": "Coupon Code"
+          },
+          {
+            "name": "gross_amount",
+            "expr": "source.gross_amount",
+            "displayName": "Gross Amount"
+          },
+          {
+            "name": "discount_amount",
+            "expr": "source.discount_amount",
+            "displayName": "Discount Amount"
+          },
+          {
+            "name": "net_amount",
+            "expr": "source.net_amount",
+            "displayName": "Net Amount"
+          },
+          {
+            "name": "coupon_flag",
+            "expr": "source.coupon_flag",
+            "displayName": "Coupon Flag"
+          },
+          {
+            "name": "currency",
+            "expr": "source.currency",
+            "displayName": "Currency"
+          },
+          {
+            "name": "inr_rate",
+            "expr": "source.inr_rate",
+            "displayName": "Inr Rate"
+          },
+          {
+            "name": "net_amount_inr",
+            "expr": "source.net_amount_inr",
+            "displayName": "Net Amount Inr"
+          },
+          {
+            "name": "file_name",
+            "expr": "source.file_name",
+            "displayName": "File Name"
+          },
+          {
+            "name": "ingest_timestamp",
+            "expr": "source.ingest_timestamp",
+            "displayName": "Ingest Timestamp"
+          },
+          {
+            "name": "year",
+            "expr": "source.year",
+            "displayName": "Year"
+          },
+          {
+            "name": "month_name",
+            "expr": "source.month_name",
+            "displayName": "Month Name"
+          },
+          {
+            "name": "day_name",
+            "expr": "source.day_name",
+            "displayName": "Day Name"
+          },
+          {
+            "name": "is_weekend",
+            "expr": "source.is_weekend",
+            "displayName": "Is Weekend"
+          },
+          {
+            "name": "quarter",
+            "expr": "source.quarter",
+            "displayName": "Quarter"
+          },
+          {
+            "name": "week",
+            "expr": "source.week",
+            "displayName": "Week"
+          },
+          {
+            "name": "sku",
+            "expr": "source.sku",
+            "displayName": "Sku"
+          },
+          {
+            "name": "category_code",
+            "expr": "source.category_code",
+            "displayName": "Category Code"
+          },
+          {
+            "name": "category_name",
+            "expr": "source.category_name",
+            "displayName": "Category Name"
+          },
+          {
+            "name": "brand_code",
+            "expr": "source.brand_code",
+            "displayName": "Brand Code"
+          },
+          {
+            "name": "brand_name",
+            "expr": "source.brand_name",
+            "displayName": "Brand Name"
+          },
+          {
+            "name": "color",
+            "expr": "source.color",
+            "displayName": "Color"
+          },
+          {
+            "name": "size",
+            "expr": "source.size",
+            "displayName": "Size"
+          },
+          {
+            "name": "rating_count",
+            "expr": "source.rating_count",
+            "displayName": "Rating Count"
+          },
+          {
+            "name": "hour_of_day",
+            "expr": "source.hour_of_day",
+            "displayName": "Hour Of Day"
+          },
+          {
+            "name": "discount_bucket",
+            "expr": "CASE \n  WHEN source.discount_percent = 0 THEN 'No Discount'\n  WHEN source.discount_percent <= 10 THEN '1-10%'\n  WHEN source.discount_percent <= 20 THEN '11-20%'\n  WHEN source.discount_percent <= 30 THEN '21-30%'\n  ELSE '31%+'\nEND\n",
+            "displayName": "Discount Bucket"
+          },
+          {
+            "name": "coupon_usage",
+            "expr": "CASE \n  WHEN source.coupon_flag = 1 THEN 'With Coupon' \n  ELSE 'Without Coupon' \nEND\n",
+            "displayName": "Coupon Usage"
+          }
+        ],
+        "measures": [
+          {
+            "name": "count",
+            "expr": "COUNT(*)",
+            "comment": "Represents the total number of rows in the dataset. Use this measure to count all",
+            "displayName": "Count"
+          },
+          {
+            "name": "total_sales",
+            "expr": "SUM(source.net_amount)",
+            "displayName": "Total Sales"
+          },
+          {
+            "name": "total_discount",
+            "expr": "SUM(source.discount_amount)",
+            "displayName": "Total Discount"
+          },
+          {
+            "name": "total_gross_sales",
+            "expr": "SUM(source.gross_amount)",
+            "displayName": "Total Gross Sales"
+          }
+        ]
+      }
+    }
+  ],
+  "pages": [
+    {
+      "name": "f343f058",
+      "displayName": "Sales",
+      "layout": [
+        {
+          "widget": {
+            "name": "18b82c8e",
+            "multilineTextboxSpec": {
+              "lines": [
+                "### **Sales Insights**"
+              ]
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 12,
+            "height": 1
+          }
+        },
+        {
+          "widget": {
+            "name": "97473147",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "857c288c",
+                  "fields": [
+                    {
+                      "name": "monthly(transaction_date)",
+                      "expression": "DATE_TRUNC(\"MONTH\", `transaction_date`)"
+                    },
+                    {
+                      "name": "measure(total_sales)",
+                      "expression": "MEASURE(`total_sales`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "title": "Total Sales by Month",
+                "showTitle": true
+              },
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "monthly(transaction_date)",
+                  "axis": {
+                    "title": "Month"
+                  },
+                  "scale": {
+                    "type": "temporal"
+                  }
+                },
+                "y": {
+                  "fieldName": "measure(total_sales)",
+                  "format": {
+                    "type": "number-currency",
+                    "currencyCode": "USD",
+                    "abbreviation": "compact"
+                  },
+                  "axis": {
+                    "title": "Total Sales"
+                  },
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 1,
+            "width": 6,
+            "height": 5
+          }
+        },
+        {
+          "widget": {
+            "name": "f0cc1142",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "857c288c",
+                  "fields": [
+                    {
+                      "name": "measure(total_sales)",
+                      "expression": "MEASURE(`total_sales`)"
+                    },
+                    {
+                      "name": "measure(total_discount)",
+                      "expression": "MEASURE(`total_discount`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "title": "Coupon Code Usage and Discount Impact",
+                "showTitle": true
+              },
+              "mark": {
+                "layout": "group"
+              },
+              "widgetType": "bar",
+              "encodings": {
+                "y": {
+                  "fields": [
+                    {
+                      "fieldName": "measure(total_sales)",
+                      "displayName": "Total Sales"
+                    },
+                    {
+                      "fieldName": "measure(total_discount)",
+                      "displayName": "Total Discount"
+                    }
+                  ],
+                  "scale": {
+                    "type": "quantitative"
+                  },
+                  "format": {
+                    "type": "number-currency",
+                    "currencyCode": "USD",
+                    "abbreviation": "compact"
+                  },
+                  "axis": {
+                    "title": "Amount"
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 1,
+            "width": 6,
+            "height": 5
+          }
+        },
+        {
+          "widget": {
+            "name": "c6b399a5",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "857c288c",
+                  "fields": [
+                    {
+                      "name": "sum(net_amount)",
+                      "expression": "SUM(`net_amount`)"
+                    },
+                    {
+                      "name": "hour_of_day",
+                      "expression": "`hour_of_day`"
+                    },
+                    {
+                      "name": "day_name",
+                      "expression": "`day_name`"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "heatmap",
+              "encodings": {
+                "x": {
+                  "fieldName": "hour_of_day",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "y": {
+                  "fieldName": "day_name",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "color": {
+                  "fieldName": "sum(net_amount)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 6,
+            "width": 12,
+            "height": 6
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_CANVAS",
+      "layoutVersion": "GRID_V1"
+    },
+    {
+      "name": "d743c8f4",
+      "displayName": "Global Filters",
+      "layout": [
+        {
+          "widget": {
+            "name": "a535437c",
+            "queries": [
+              {
+                "name": "dashboards/01f172360b3d188a96d27067d4cab919/datasets/01f17236b0821ea9ae9b7533da539b39_category_name",
+                "query": {
+                  "datasetName": "857c288c",
+                  "fields": [
+                    {
+                      "name": "category_name",
+                      "expression": "`category_name`"
+                    },
+                    {
+                      "name": "category_name_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "showTitle": true
+              },
+              "widgetType": "filter-single-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "category_name",
+                    "queryName": "dashboards/01f172360b3d188a96d27067d4cab919/datasets/01f17236b0821ea9ae9b7533da539b39_category_name"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 1,
+            "height": 2
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_GLOBAL_FILTERS",
+      "layoutVersion": "GRID_V1"
+    },
+    {
+      "name": "2524d8e2",
+      "displayName": "Marketing",
+      "layout": [
+        {
+          "widget": {
+            "name": "a15240ef",
+            "multilineTextboxSpec": {
+              "lines": [
+                "## Marketing Insight"
+              ]
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 12,
+            "height": 1
+          }
+        },
+        {
+          "widget": {
+            "name": "a215684f",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "857c288c",
+                  "fields": [
+                    {
+                      "name": "count(*)",
+                      "expression": "COUNT(`*`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "histogram",
+              "encodings": {
+                "y": {
+                  "fieldName": "count(*)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 1,
+            "width": 6,
+            "height": 5
+          }
+        },
+        {
+          "widget": {
+            "name": "cef1ec59",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "857c288c",
+                  "fields": [
+                    {
+                      "name": "brand_name",
+                      "expression": "`brand_name`"
+                    },
+                    {
+                      "name": "measure(total_sales)",
+                      "expression": "MEASURE(`total_sales`)"
+                    }
+                  ],
+                  "disaggregated": false,
+                  "orders": [
+                    {
+                      "direction": "DESC",
+                      "expression": "MEASURE(`total_sales`)"
+                    }
+                  ]
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "title": "Top Performing Brands by Total Sales",
+                "showTitle": true
+              },
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "brand_name",
+                  "axis": {
+                    "title": "Brand"
+                  },
+                  "scale": {
+                    "type": "categorical",
+                    "sort": {
+                      "by": "measure-reversed",
+                      "measure": {
+                        "fieldName": "measure(total_sales)"
+                      }
+                    }
+                  }
+                },
+                "y": {
+                  "fieldName": "measure(total_sales)",
+                  "format": {
+                    "type": "number-currency",
+                    "currencyCode": "USD",
+                    "abbreviation": "compact"
+                  },
+                  "axis": {
+                    "title": "Total Sales"
+                  },
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 1,
+            "width": 6,
+            "height": 5
+          }
+        },
+        {
+          "widget": {
+            "name": "7ba2a552",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "857c288c",
+                  "fields": [
+                    {
+                      "name": "monthly(transaction_ts)",
+                      "expression": "DATE_TRUNC(\"MONTH\", `transaction_ts`)"
+                    },
+                    {
+                      "name": "sum(year)",
+                      "expression": "SUM(`year`)"
+                    },
+                    {
+                      "name": "sum(net_amount)",
+                      "expression": "SUM(`net_amount`)"
+                    }
+                  ],
+                  "disaggregated": false,
+                  "orders": [
+                    {
+                      "direction": "DESC",
+                      "expression": "DATE_TRUNC(\"MONTH\", `transaction_ts`)"
+                    }
+                  ]
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "sum(net_amount)"
+                },
+                "target": {
+                  "fieldName": "sum(year)",
+                  "change": {
+                    "type": "percent"
+                  },
+                  "period": {
+                    "type": "relative-to-value-period",
+                    "offset": 0
+                  }
+                },
+                "period": {
+                  "fieldName": "monthly(transaction_ts)"
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 6,
+            "width": 12,
+            "height": 6
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_CANVAS",
+      "layoutVersion": "GRID_V1"
+    }
+  ],
+  "uiSettings": {
+    "theme": {
+      "widgetHeaderAlignment": "ALIGNMENT_UNSPECIFIED"
+    },
+    "applyModeEnabled": false
+  }
+}
